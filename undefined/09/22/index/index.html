@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/labixiaoxin.png">
+  <link rel="icon" href="/img/labixiaoxin.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="welcome to my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="[每日一题][判断回文]题目现有一个字符串，请你判断该字符串是否是回文。如果是返回True，否则返回False   示例12345678输入：&quot;abcba&quot;返回：true输入：&quot;qwe&quot;返回：false输入：&quot;a&quot;返回：true 题解方法1 【双指针】既然需要判断字符串是否为回文，最简单的办法应该是用字符串的第一个字符和最后一个字符比较，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【字符串回文】">
+<meta property="og:url" content="http://uhawblog25.cn/undefined/09/22/index/index.html">
+<meta property="og:site_name" content="HAWLEY BLOG">
+<meta property="og:description" content="[每日一题][判断回文]题目现有一个字符串，请你判断该字符串是否是回文。如果是返回True，否则返回False   示例12345678输入：&quot;abcba&quot;返回：true输入：&quot;qwe&quot;返回：false输入：&quot;a&quot;返回：true 题解方法1 【双指针】既然需要判断字符串是否为回文，最简单的办法应该是用字符串的第一个字符和最后一个字符比较，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-22T11:49:30.000Z">
+<meta property="article:modified_time" content="2021-11-18T09:32:54.681Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="指针">
+<meta property="article:tag" content="字符串处理">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>【字符串回文】 - HAWLEY BLOG</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"uhawblog25.cn","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hawley</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Luh125/images/newbgd.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【字符串回文】">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-22 19:49" pubdate>
+        September 22, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【字符串回文】</h1>
+            
+            <div class="markdown-body">
+              <h1 id="每日一题-判断回文"><a href="#每日一题-判断回文" class="headerlink" title="[每日一题][判断回文]"></a>[每日一题][判断回文]</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><strong>现有一个字符串，请你判断该字符串是否是回文。如果是返回True，否则返回False</strong>  </p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk">输入：<span class="hljs-comment">&quot;abcba&quot;</span><br>返回：<span class="hljs-keyword">true</span><br><br>输入：<span class="hljs-comment">&quot;qwe&quot;</span><br>返回：<span class="hljs-keyword">false</span><br><br>输入：<span class="hljs-comment">&quot;a&quot;</span><br>返回：<span class="hljs-keyword">true</span><br></code></pre></td></tr></table></figure>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><h5 id="方法1-【双指针】"><a href="#方法1-【双指针】" class="headerlink" title="方法1 【双指针】"></a><em><strong>方法1 【双指针】</strong></em></h5><p>既然需要判断字符串是否为回文，最简单的办法应该是用字符串的第一个字符和最后一个字符比较，第二个字符和倒数第二个比较……<br>于是可以写出代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> judge (<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>    <span class="hljs-built_in">int</span> len=<span class="hljs-built_in">str</span>.length();<br>    <span class="hljs-built_in">int</span> j=len<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;j;i++,j--)&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">str</span>.charAt(i)!=<span class="hljs-built_in">str</span>.charAt(j))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>    &#125;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><em><strong>代码解释</strong></em><br/><br>&nbsp;&nbsp;利用i和j，在for循环中来判断字符串首尾是否相同，如果有一处不同，则不符合题意，返回false，如果全部相同，结束for循环，返回true。<br>举个例子，输入的字符串为”abcba”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">charAt(0)=&#x27;a&#x27;,charAt(1)=&#x27;b&#x27;,charAt(2)=&#x27;c&#x27;,charAt(3)=&#x27;b&#x27;,charAt(4)=&#x27;a&#x27;<br></code></pre></td></tr></table></figure>
+<p>代码开始运行：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">①第一次：<span class="hljs-attribute">i</span>=0,j=str.length()-1=4; charAt(0)=<span class="hljs-string">&#x27;a&#x27;</span>,charAt(4)=<span class="hljs-string">&#x27;a&#x27;</span>,正确,继续运行。<br>②第二次：<span class="hljs-attribute">i</span>=1,j=4-1=3; charAt(1)=<span class="hljs-string">&#x27;b&#x27;</span>,charAt(3)=<span class="hljs-string">&#x27;b&#x27;</span>,正确,继续运行。<br>③第三次：<span class="hljs-attribute">i</span>=2,j=3-1=2; charAt(2)=<span class="hljs-string">&#x27;c&#x27;</span>,charAt(2)=<span class="hljs-string">&#x27;c&#x27;</span>,正确,继续运行。<br>④第四次：<span class="hljs-attribute">i</span>=3,j=2-1=1; i&gt;j,不符合<span class="hljs-keyword">for</span>循环进入条件,推出循环，执行 return <span class="hljs-literal">true</span>;<br><br>返回值为<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h5 id="方法2-【利用StringBuffer产生新对象】"><a href="#方法2-【利用StringBuffer产生新对象】" class="headerlink" title="方法2 【利用StringBuffer产生新对象】"></a><em><strong>方法2 【利用StringBuffer产生新对象】</strong></em></h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> judge (<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>        StringBuffer s1 = <span class="hljs-keyword">new</span> StringBuffer(<span class="hljs-built_in">str</span>);    <br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>.equals(s1.<span class="hljs-built_in">reverse</span>().toString());<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p><em><strong>代码解释</strong></em><br/><br><code>StringBuffer s1 = new StringBuffer();</code>可以初始化一个新的空对象;<br /><br>而代码中<code>StringBuffer s1 = new StringBuffer(str);</code>则是将str中字符串内容赋予s1;<br>这样,s1中的内容就变成了str中的内容.<br />s1经过revers()反转后,要将他转换成String类型,故还要用到toString(),方便进行比较.</p>
+<hr>
+<p><em><strong>[点1]为什么用StringBuffer而不用String呢？</strong></em><br /><br>SringBuffer类和String一样，也用来代表字符串.<br /><br>但是相比String, StringBuffer在进行字符串处理时,不生成新的对象,在内存使用上要优于String类.<br />当遇到插入、删除等字符串操作时,可以考虑用StringBuffer.<br /><br /><br><em><strong>[点2]关于reverse()</strong></em><br /><br>使用<code>reverse()</code>时需要用到 <code>import java.util.*;</code><br /><br><code>reverse()</code>的作用是<strong>反转</strong>，例如字符反转和列表反转.<br /></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">StringBuffer</span> s1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">StringBuffer</span>(<span class="hljs-string">&quot;abc&quot;</span>);<br><span class="hljs-keyword">return</span> s1.reverse();<br> <br>--最终返回值为<span class="hljs-string">&quot;cba&quot;</span>.<br></code></pre></td></tr></table></figure>
+
+<p><br /><em><strong>[点3]为什么用equals而不是”==”？</strong></em><br /><br>equals比较的是两个字符串内容是否相等;<br /><br>==比较的是两个字符串的内存地址是否相同。<br /><br>在上述代码中,我们新建了一个新对象StringBuffer s1,明显内存地址是不同的,所以要用到equals();</p>
+<hr>
+<h6 id="2021-9-22"><a href="#2021-9-22" class="headerlink" title="2021.9.22"></a>2021.9.22</h6><p>如果您有好的建议或发现了问题，请联系我<a href="mailto:&#x32;&#x37;&#49;&#53;&#50;&#48;&#x31;&#54;&#x34;&#50;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#x32;&#x37;&#49;&#53;&#50;&#48;&#x31;&#54;&#x34;&#50;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;</a><br /><br>欢迎访问<a href="https://uhawblog25.cn/">我的主页</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%A2%98%E7%9B%AE/">题目</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8C%87%E9%92%88/">指针</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">字符串处理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/undefined/10/01/isetjava/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【一段有趣的Java代码】</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/undefined/09/21/hawleynew/">
+                        <span class="hidden-mobile">【斐波那契数列】</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鲁ICP备2021040945号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37068102000295"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="https://cdn.jsdelivr.net/gh/Luh125/images/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鲁公网安备37068102000295号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
