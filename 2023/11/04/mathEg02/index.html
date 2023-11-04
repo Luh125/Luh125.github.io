@@ -205,7 +205,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sat Nov 04 2023 22:41:46 GMT+0800">2023年11月04日 22:41:46</span>
+                <span class="pc" data-updated="Sat Nov 04 2023 23:01:10 GMT+0800">2023年11月04日 23:01:10</span>
             </span>
         
 
@@ -228,10 +228,6 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>242 Words</span>
-            </span>
-        
         
         
     </div>
@@ -247,87 +243,8 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .question {
-            font-size: 20px;
-        }
-        input {
-            font-size: 20px;
-        }
-        .question-divider {
-            margin-bottom: 20px; /* 添加下边距来分隔题目 */
-        }
-        .green-button {
-            border-radius: 25%;
-            background: none;
-            border: 0;
-            box-sizing: border-box;
-            margin: 1em;
-            padding: 1em 2em;
-            box-shadow: inset 0 0 0 2px #61f068;
-            color: #f45e61;
-            font-size: inherit;
-            font-weight: 700;
-            position: relative;
-        }
-        .green-button:active {
-            background-color: #61f068;
-            color: #fff;
-         }
-    </style>
-    <script>
-        function generateQuestions() {
-            var questions = document.getElementById('questions');
-            questions.innerHTML = '';
-            for (var i = 0; i < 10; i++) {
-                var num1 = Math.floor(Math.random() * 11); // 0-5
-                var num2 = Math.floor(Math.random() * 11); // 0-5
-                var operator = Math.random() < 0.5 ? '+' : '-';
-                var questionText = num1 + ' ' + operator + ' ' + num2 + ' = ';
-                var answer = operator === '+' ? num1 + num2 : num1 - num2;
-                if (answer < 0 || answer > 10) {
-                    i--;
-                } else {
-                    var question = document.createElement('div');
-                    question.classList.add('question'); // 添加样式类
-                    question.innerHTML = questionText;
-                    var input = document.createElement('input');
-                    input.type = 'text';
-                    input.dataset.answer = answer;
-                    question.appendChild(input);
-                    questions.appendChild(question);
-                    // 添加题目之间的分隔行
-                    var questionDivider = document.createElement('div');
-                    questionDivider.classList.add('question-divider');
-                    questions.appendChild(questionDivider);
-                }
-            }
-        }
-        function submitAnswers() {
-            var questions = document.querySelectorAll('#questions input');
-            var correct = 0;
-            for (var i = 0; i < questions.length; i++) {
-                var userAnswer = parseInt(questions[i].value);
-                var correctAnswer = parseInt(questions[i].dataset.answer);
-                if (userAnswer === correctAnswer) {
-                    questions[i].style.backgroundColor = 'lightgreen';
-                } else {
-                    questions[i].style.backgroundColor = 'pink';
-                }
-            }
-        }
-    </script>
-</head>
-<body>
-    <h1>10以内加减法</h1>
-    <button class="green-button" onclick="generateQuestions()">生成题目</button>
-    <div id="questions"></div>
-    <button class="green-button" onclick="submitAnswers()">提交</button>
-</body>
-</html>
+                    <p><object data="/another/problemMath01.html" type="text/html" style="width:100%; height:800px;"></object></p>
+
                 </div>
 
                 
@@ -394,7 +311,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">10以内加减法</span></a></li></ol>
+        
     </div>
 </div>
 
@@ -558,7 +475,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">10以内加减法</span></a></li></ol>
+        
     </div>
 </div>
 
