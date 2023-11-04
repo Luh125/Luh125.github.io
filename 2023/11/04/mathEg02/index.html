@@ -9,7 +9,7 @@
     
     <title>
         
-            测试页 |
+            10以内加减法运算 |
         
         瀚霖的学习网站
     </title>
@@ -172,7 +172,7 @@
             <div class="article-content-bottom border-box">
                 
                     <div class="article-title">
-                        测试页
+                        10以内加减法运算
                     </div>
                 
 
@@ -199,21 +199,38 @@
         
             <span class="meta-info-item article-create-date">
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2023年11月03日 00:07:19</span>
-                <span class="mobile">2023-11-03 00:07</span>
+                <span class="pc">2023年11月04日 21:05:01</span>
+                <span class="mobile">2023-11-04 21:05</span>
             </span>
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sat Nov 04 2023 22:19:49 GMT+0800">2023年11月04日 22:19:49</span>
+                <span class="pc" data-updated="Sat Nov 04 2023 22:19:52 GMT+0800">2023年11月04日 22:19:52</span>
             </span>
         
 
         
 
         
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="article-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/10%E4%BB%A5%E5%86%85%E5%8A%A0%E5%87%8F%E6%B3%95/">10以内加减法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>242 Words</span>
+            </span>
         
         
         
@@ -230,19 +247,105 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://cdn.jsdelivr.net/gh/Luh125/hanlinpic/hlshuxue/202311030158411.jfif"
-                     
-                ></p>
-
+                    <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .question {
+            font-size: 20px;
+        }
+        input {
+            font-size: 20px;
+        }
+        .question-divider {
+            margin-bottom: 20px; /* 添加下边距来分隔题目 */
+        }
+        .green-button {
+            border-radius: 25%;
+            background: none;
+            border: 0;
+            box-sizing: border-box;
+            margin: 1em;
+            padding: 1em 2em;
+            box-shadow: inset 0 0 0 2px #61f068;
+            color: #f45e61;
+            font-size: inherit;
+            font-weight: 700;
+            position: relative;
+        }
+        .green-button:hover {
+            background-color: #61f068;
+            color: #fff;
+         }
+    </style>
+    <script>
+        function generateQuestions() {
+            var questions = document.getElementById('questions');
+            questions.innerHTML = '';
+            for (var i = 0; i < 10; i++) {
+                var num1 = Math.floor(Math.random() * 11); // 0-5
+                var num2 = Math.floor(Math.random() * 11); // 0-5
+                var operator = Math.random() < 0.5 ? '+' : '-';
+                var questionText = num1 + ' ' + operator + ' ' + num2 + ' = ';
+                var answer = operator === '+' ? num1 + num2 : num1 - num2;
+                if (answer < 0 || answer > 10) {
+                    i--;
+                } else {
+                    var question = document.createElement('div');
+                    question.classList.add('question'); // 添加样式类
+                    question.innerHTML = questionText;
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                    input.dataset.answer = answer;
+                    question.appendChild(input);
+                    questions.appendChild(question);
+                    // 添加题目之间的分隔行
+                    var questionDivider = document.createElement('div');
+                    questionDivider.classList.add('question-divider');
+                    questions.appendChild(questionDivider);
+                }
+            }
+        }
+        function submitAnswers() {
+            var questions = document.querySelectorAll('#questions input');
+            var correct = 0;
+            for (var i = 0; i < questions.length; i++) {
+                var userAnswer = parseInt(questions[i].value);
+                var correctAnswer = parseInt(questions[i].dataset.answer);
+                if (userAnswer === correctAnswer) {
+                    questions[i].style.backgroundColor = 'lightgreen';
+                } else {
+                    questions[i].style.backgroundColor = 'pink';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>10以内加减法</h1>
+    <button class="green-button" onclick="generateQuestions()">生成题目</button>
+    <div id="questions"></div>
+    <button class="green-button" onclick="submitAnswers()">提交</button>
+</body>
+</html>
                 </div>
 
                 
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/10%E4%BB%A5%E5%86%85%E5%8A%A0%E5%87%8F%E6%B3%95/">10以内加减法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -255,22 +358,22 @@
                 
                     <div class="article-nav">
                         
-                            <div class="article-prev">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2023/11/04/mathEg02/"
-                                   title="10以内加减法运算"
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/11/03/mathEg01/"
+                                   title="测试页"
                                 >
-                                    <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">测试页</span>
+                                        <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">10以内加减法运算</span>
-                                        <span class="post-nav-item">Prev posts</span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
-                        
                         
                     </div>
                 
@@ -291,7 +394,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">10以内加减法</span></a></li></ol>
     </div>
 </div>
 
@@ -455,7 +558,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">10以内加减法</span></a></li></ol>
     </div>
 </div>
 
